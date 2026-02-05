@@ -404,16 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // WhatsApp form submission
     const whatsappButton = document.getElementById('whatsappSubmit');
     const contactForm = document.getElementById('contactForm');
-    const emailInput = document.getElementById('email');
-    const replyToEmail = document.getElementById('replyToEmail');
     const phoneInput = document.getElementById('phone');
-    
-    // Update reply-to email when email input changes
-    if (emailInput && replyToEmail) {
-        emailInput.addEventListener('input', function() {
-            replyToEmail.value = this.value;
-        });
-    }
     
     // Format phone number input - remove leading zero automatically
     if (phoneInput) {

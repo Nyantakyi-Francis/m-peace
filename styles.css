@@ -1593,6 +1593,9 @@ ul {
     z-index: 0;
 }
 
+
+/* Add these to your existing styles.css */
+
 /* Phone input group */
 .phone-input-group {
     display: flex;
