@@ -117,8 +117,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="email@example.com">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="email@example.com" required>
                         </div>
 
                         <div class="form-group">
@@ -137,8 +137,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="category">How can we help?</label>
-                            <select id="category" name="category">
+                            <label for="category">How can we help? *</label>
+                            <select id="category" name="category" required>
+                                <option value="">-- Please Select --</option>
                                 <option value="general">General Inquiry</option>
                                 <option value="donation">Donate (Soles of Hope/Sanitary Pads)</option>
                                 <option value="membership">Become a Member</option>
@@ -264,7 +265,9 @@
     </footer>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="scripts.js"></script>
+
+    <!-- IMPORTANT: Use contact-form-only.js instead of scripts.js to avoid conflicts -->
+    <script src="contact-form-only.js"></script>
 </body>
 
 </html>
