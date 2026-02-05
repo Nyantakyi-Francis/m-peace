@@ -41,7 +41,7 @@ Place all images in the `images/` folder with the following filenames:
 - `wwd2.jpg` - What We Do image 2 (recommended size: 400x300px)
 - `wwd3.jpg` - What We Do image 3 (recommended size: 400x300px)
 
-### Board Members Photos (300x400px recommended)
+### Executives Photos (300x400px recommended)
 
 - `board1.jpg` - Board Member 1 photo
 - `board2.jpg` - Board Member 2 photo
@@ -101,7 +101,7 @@ To test the website immediately, you can create placeholder images using online 
 Hero Image: https://via.placeholder.com/800x600/8B4789/FFFFFF?text=Hero+Image
 About Story: https://via.placeholder.com/600x600/D946A6/FFFFFF?text=Our+Story
 Events: https://via.placeholder.com/400x300/8B4789/FFFFFF?text=Event+Image
-Board Members: https://via.placeholder.com/300x400/D946A6/FFFFFF?text=Board+Member
+Executives: https://via.placeholder.com/300x400/D946A6/FFFFFF?text=Board+Member
 ```
 
 Simply download these and rename them according to the list above.

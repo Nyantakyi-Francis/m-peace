@@ -799,7 +799,7 @@ ul {
 }
 
 /* ============================================
-   BOARD MEMBERS PAGE STYLES
+   Executives PAGE STYLES
    ============================================ */
 .board-members {
     padding: var(--spacing-xl) 0;
@@ -1460,7 +1460,7 @@ ul {
         flex-direction: column;
     }
 
-    /* Board Members */
+    /* Executives */
     .board-grid {
         grid-template-columns: 1fr;
     }
