@@ -7,8 +7,7 @@
     <meta name="description"
         content="Contact Marvelous Touch Foundation - Reach out to us for partnerships, donations, or volunteering in Atebubu-Amantin.">
     <title>Contact Us - Marvelous Touch Foundation</title>
-        <link rel="icon" type="image/png" href="images/favicon.png">
-
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -98,27 +97,44 @@
                     <div class="contact-social">
                         <h4>Follow Our Impact</h4>
                         <div class="social-icons-large">
-                        <a href="https://web.facebook.com/profile.php?id=61555293811873" target="_blank" rel="noopener noreferrer"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.youtube.com/@MarvelousTouchFoundation-x6l" target="_blank" rel="noopener noreferrer"><i
-                                class="fab fa-youtube"></i></a>
+                            <a href="https://web.facebook.com/profile.php?id=61555293811873" target="_blank"
+                                rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.youtube.com/@MarvelousTouchFoundation-x6l" target="_blank"
+                                rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
 
-
-
                 <div class="contact-form-wrapper">
                     <h2>Send us a Message</h2>
-                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mvzbpgkj" method="POST">
+                        <input type="hidden" name="_subject"
+                            value="New Contact Form Submission - Marvelous Touch Foundation">
+                        <input type="hidden" name="_replyto" id="replyToEmail">
+
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" placeholder="Enter your name" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="email@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <div class="phone-input-group">
+                                <div class="country-code-wrapper">
+                                    <span class="country-code-prefix">+</span>
+                                    <input type="text" id="countryCode" name="countryCode" class="country-code-input"
+                                        placeholder="233" value="233" maxlength="4">
+                                </div>
+                                <input type="tel" id="phone" name="phone" placeholder="54 753 9664 (without leading 0)"
+                                    required>
+                            </div>
+                            <small class="phone-hint">Enter phone number without leading zero (e.g., 54 753 9664 instead
+                                of 054 753 9664)</small>
                         </div>
 
                         <div class="form-group">
@@ -139,7 +155,18 @@
                                 required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div class="form-submit-buttons">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-envelope"></i> Send via Email
+                            </button>
+                            <button type="button" id="whatsappSubmit" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                            </button>
+                        </div>
+
+                        <!-- Formspree hidden fields -->
+                        <input type="hidden" name="_format" value="plain">
+                        <input type="text" name="_gotcha" style="display:none">
                     </form>
                 </div>
             </div>
@@ -223,12 +250,12 @@
                 </div>
                 <div class="footer-social">
                     <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="https://web.facebook.com/profile.php?id=61555293811873" target="_blank" rel="noopener noreferrer"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@MarvelousTouchFoundation-x6l" target="_blank" rel="noopener noreferrer"><i
-                            class="fab fa-youtube"></i></a>
-                </div>
+                    <div class="social-icons">
+                        <a href="https://web.facebook.com/profile.php?id=61555293811873" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@MarvelousTouchFoundation-x6l" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
