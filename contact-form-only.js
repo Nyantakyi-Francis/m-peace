@@ -226,31 +226,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // FAQ functionality (if FAQs exist on page)
     const faqQuestions = document.querySelectorAll('.faq-question');
     if (faqQuestions.length > 0) {
+        console.log('FAQ questions found:', faqQuestions.length);
+        
         faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                const isActive = answer.classList.contains('active');
+                
+                console.log('FAQ clicked, currently active:', isActive);
                 
                 if (answer && icon) {
-                    // Toggle current FAQ
-                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-                    icon.classList.toggle('fa-chevron-down');
-                    icon.classList.toggle('fa-chevron-up');
-                    
-                    // Close other FAQs
+                    // Close all other FAQs first
                     faqQuestions.forEach(otherQuestion => {
+                        const otherAnswer = otherQuestion.nextElementSibling;
+                        const otherIcon = otherQuestion.querySelector('i');
+                        
                         if (otherQuestion !== question) {
-                            const otherAnswer = otherQuestion.nextElementSibling;
-                            const otherIcon = otherQuestion.querySelector('i');
-                            if (otherAnswer) otherAnswer.style.display = 'none';
+                            if (otherAnswer) otherAnswer.classList.remove('active');
                             if (otherIcon) {
                                 otherIcon.classList.remove('fa-chevron-up');
                                 otherIcon.classList.add('fa-chevron-down');
                             }
                         }
                     });
+                    
+                    // Toggle current FAQ
+                    if (isActive) {
+                        answer.classList.remove('active');
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        answer.classList.add('active');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
                 }
             });
         });
+    } else {
+        console.log('No FAQ questions found on this page');
     }
 });
