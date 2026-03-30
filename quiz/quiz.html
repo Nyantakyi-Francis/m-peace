@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTCE Quiz Portal</title>
+    <?!= include('Styles'); ?>
+    
+<style>
+    :root {
+        --primary: #123b63;
+        --primary-2: #1f4e79;
+        --accent: #dbeafe;
+        --bg: #eef4fa;
+        --card: rgba(255, 255, 255, 0.94);
+        --text: #1f2937;
+        --muted: #5b6472;
+        --border: rgba(18, 59, 99, 0.12);
+        --shadow: 0 18px 45px rgba(18, 59, 99, 0.16);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, Arial, sans-serif;
+        color: var(--text);
+        background:
+            radial-gradient(circle at top left, rgba(219, 234, 254, 0.85), transparent 35%),
+            radial-gradient(circle at bottom right, rgba(191, 219, 254, 0.65), transparent 30%),
+            linear-gradient(135deg, #edf4fb 0%, #dfeaf5 100%);
+        min-height: 100vh;
+    }
+
+    .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+    }
+
+    .hero {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px 0;
+    }
+
+    .hero-shell {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: stretch;
+    }
+
+    .panel {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 26px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+    }
+
+    .hero-main {
+        padding: 44px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-main::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        right: -70px;
+        top: -70px;
+        background: linear-gradient(135deg, rgba(31, 78, 121, 0.13), rgba(219, 234, 254, 0.2));
+        border-radius: 50%;
+    }
+
+    .hero-side {
+        padding: 34px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: #eef6ff;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        margin-bottom: 20px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #16a34a;
+        box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.12);
+    }
+
+    .institution {
+        color: var(--primary);
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        margin: 0 0 10px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.08;
+        margin: 0 0 16px;
+        color: var(--primary);
+        max-width: 16ch;
+    }
+
+    .lead {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--muted);
+        margin: 0 0 28px;
+    }
+
+    .meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin: 24px 0 30px;
+    }
+
+    .meta-card {
+        background: #f8fbff;
+        border: 1px solid #d8e5f2;
+        border-radius: 18px;
+        padding: 18px 16px;
+    }
+
+    .meta-card .label {
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        color: var(--muted);
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+
+    .meta-card .value {
+        display: block;
+        color: var(--primary);
+        font-size: 1rem;
+        font-weight: 800;
+        line-height: 1.4;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .btn {
+        appearance: none;
+        border: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 0 28px;
+        border-radius: 14px;
+        font-weight: 800;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.18s ease;
+        flex: 1;
+        min-width: 220px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #fff;
+        box-shadow: 0 12px 26px rgba(18, 59, 99, 0.24);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 35px rgba(18, 59, 99, 0.32);
+    }
+
+    .side-title {
+        margin: 0 0 12px;
+        color: var(--primary);
+        font-size: 1.35rem;
+    }
+
+    .side-text {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0 0 20px;
+    }
+
+    .info-list {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .info-item {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 14px;
+        align-items: start;
+        padding: 14px;
+        border-radius: 18px;
+        background: #f8fbff;
+        border: 1px solid #dbe7f3;
+    }
+
+    .icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: #dbeafe;
+        color: var(--primary);
+        font-weight: 900;
+        font-size: 19px;
+    }
+
+    .info-item strong {
+        display: block;
+        color: var(--primary);
+        margin-bottom: 4px;
+        font-size: 0.98rem;
+    }
+
+    .info-item span {
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    .note {
+        padding: 16px 18px;
+        border-radius: 16px;
+        background: #fff8eb;
+        border: 1px solid #f3deb2;
+        color: #7a5612;
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+
+    .footer-note {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.93rem;
+        margin: 30px 0 0;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 920px) {
+        .hero-shell {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .hero {
+            padding: 16px 0 40px;
+        }
+
+        .hero-main,
+        .hero-side {
+            padding: 28px 20px;
+        }
+
+        .actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+            min-width: auto;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <main class="hero">
+        <div class="page">
+            <div class="hero-shell">
+
+                <!-- Main Panel -->
+                <section class="panel hero-main">
+                    <div class="badge">
+                        <span class="dot"></span>
+                        Quiz Portal Now Open
+                    </div>
+
+                    <p class="institution">MAMPONG TECHNICAL COLLEGE OF EDUCATION</p>
+                    <h1>Individual Quiz Portal</h1>
+                    <h2>Miss Ruhaimatu Mprah</h2>
+
+                    <p class="lead">
+                      
+                    </p>
+
+                    <div class="meta">
+                        <div class="meta-card">
+                            <span class="label">Courses</span>
+                            <span class="value">EGL 233 and ECL 113</span>
+                        </div>
+                        <div class="meta-card">
+                            <span class="label">Duration</span>
+                            <span class="value">20 Minutes</span>
+                        </div>
+                        <div class="meta-card">
+                            <span class="label">Attempts</span>
+                            <span class="value">One Submission Only</span>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <a href="https://script.google.com/macros/s/AKfycbxDRexXle2gc14W5oGeDVrAFZPylOc5jQPdU6IwCC7WDD0GFqWreJMDtu2nHODTO6jweA/exec"
+                            target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            Level 100 - Start Quiz
+                        </a>
+
+                        <a href="https://script.google.com/macros/s/AKfycby4QSO9Xuo7Wgdnc7-stL6TUCCSO48g-xsmbhBjd6eGifTDUNfTTPdKxoJYz8FvOv6B/exec"
+                            target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            Level 200 - Start Quiz
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Instructions Sidebar -->
+                <aside class="panel hero-side" id="instructions">
+                    <div>
+                        <h2 class="side-title">Before You Begin</h2>
+                        <p class="side-text">
+                            Make sure you are in a quiet environment with stable internet.
+                            Have your correct student details ready.
+                        </p>
+                    </div>
+
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <div class="icon">1</div>
+                            <div>
+                                <strong>Prepare Your Details</strong>
+                                <span>Full Name, Index Number, and Class must be entered accurately.</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="icon">2</div>
+                            <div>
+                                <strong>20 Questions • 20 Minutes</strong>
+                                <span>Answer all questions. You cannot go back once an answer is submitted.</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="icon">3</div>
+                            <div>
+                                <strong>Stay on the Page</strong>
+                                <span>Tab switching, refreshing, or leaving the quiz will be recorded as
+                                    violations.</span>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="icon">4</div>
+                            <div>
+                                <strong>One Attempt Only</strong>
+                                <span>Each Index Number is allowed only one submission.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="note">
+                        <strong>Important:</strong> Click the button for your level only when you are fully ready.
+                        The quiz will open in a new tab.
+                    </div>
+                </aside>
+            </div>
+
+            <p class="footer-note">
+                Course Tutor: Ruhaimatu Mprah<br>
+                Department of Languages • Mampong Technical College of Education
+            </p>
+        </div>
+    </main>
+
+    <?!= include('Scripts'); ?>
+</body>
+
+</html>
