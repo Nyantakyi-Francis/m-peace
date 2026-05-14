@@ -1,122 +1,100 @@
-# Marvelous Touch Foundation - Image Assets Required
+# Marvelous Touch Foundation (MATOF)
 
-## Images Directory Structure
+> *Giving the Female a Voice in Rural Ghana*
 
-Place all images in the `images/` folder with the following filenames:
+[![Website](https://img.shields.io/badge/Website-marveloustouchfoundation.com-green)](https://marveloustouchfoundation.com/)
+[![Facebook](https://img.shields.io/badge/Facebook-MATOF-blue)](https://web.facebook.com/profile.php?id=61555293811873)
+[![YouTube](https://img.shields.io/badge/YouTube-MATOF-red)](https://www.youtube.com/@MarvelousTouchFoundation-x6l)
 
-### Logo & Branding
+---
 
-- `logo.jpeg` - Main logo for header and footer (recommended size: 200x200px)
+## About
 
-### Hero Section
+**Marvelous Touch Foundation (MATOF)** is a registered non-governmental organization founded in 2020 and incorporated under Ghana's Companies Act (Act 179). Based in the **Atebubu-Amantin Municipal** of the Bono East Region, MATOF is dedicated to empowering marginalized girls and women in rural communities through education, skills development, healthcare advocacy, and leadership training.
 
-- `hero-img.jpg` - Main hero image (recommended size: 800x600px)
+Since its founding, MATOF has reached over **1,200 females** across **15 community contact points**, working to break cycles of poverty and discrimination that hold rural women and girls back.
 
-### Objective Icons (80x80px recommended)
+---
 
-- `icon1.png` - Networking & Collaboration icon
-- `icon2.png` - Shelter Provision icon
-- `icon3.png` - Resource Centers icon
-- `icon4.png` - Business Relationships icon
-- `icon5.png` - Creativity icon
-- `icon6.png` - Charity icon
+## Mission & Vision
 
-### Partner Logos (150x100px recommended)
+**Mission**
+To empower marginalized girls and women through education, skills development, healthcare advocacy, and leadership training — ensuring they have the tools to build a sustainable future.
 
-- `partner1.png` - Partner 1 logo
-- `partner2.png` - Partner 2 logo
-- `partner3.png` - Partner 3 logo
-- `partner4.png` - Partner 4 logo
+**Vision**
+To create a female-inclusive society where every girl and woman in rural Ghana is empowered, educated, and given a voice to lead and inspire change.
 
-### Campaign Banner
+---
 
-- `campaign-banner.jpg` - Current campaign banner (recommended size: 1200x600px)
+## Core Programs
 
-### About Page Images
+### 📚 Quality Education
+Providing school supplies and basic needs to keep girls in school and reduce early marriages across the Atebubu-Amantin Municipal.
 
-- `about-story.jpg` - Organization story image (recommended size: 600x600px)
-- `mission-icon.png` - Mission icon (recommended size: 100x100px)
-- `vision-icon.png` - Vision icon (recommended size: 100x100px)
-- `wwd1.jpg` - What We Do image 1 (recommended size: 400x300px)
-- `wwd2.jpg` - What We Do image 2 (recommended size: 400x300px)
-- `wwd3.jpg` - What We Do image 3 (recommended size: 400x300px)
+### 🛠️ Skills & Livelihoods
+Training teenage mothers and marginalized women in vocational trades — including soap making, crafts, and other income-generating activities — to achieve sustainable financial independence.
 
-### Executives Photos (300x400px recommended)
+### 🏥 Healthcare Access
+Fighting teenage pregnancies and addressing period poverty through menstrual hygiene education and the **"Days of Dignity"** campaign, which distributes sanitary pads and reproductive health resources to schoolgirls.
 
-- `board1.jpg` - Board Member 1 photo
-- `board2.jpg` - Board Member 2 photo
-- `board3.jpg` - Board Member 3 photo
-- `board4.jpg` - Board Member 4 photo
-- `board5.jpg` - Board Member 5 photo
-- `board6.jpg` - Board Member 6 photo
+### 📣 Advocacy
+Amplifying the voices of the unheard and challenging cultural barriers that leave rural females marginalized, working closely with local assemblies and schools.
 
-### Events Page Images (400x300px recommended)
+### 👟 Compassionate Outreach — *Soles of Hope*
+Donating shoes to ensure no child has to walk miles to school barefoot, alongside distribution of school kits and other essential supplies.
 
-- `event1.jpg` - Event 1 image
-- `event2.jpg` - Event 2 image
-- `event3.jpg` - Event 3 image
-- `event4.jpg` - Event 4 image
-- `event5.jpg` - Event 5 image
-- `event6.jpg` - Event 6 image
-- `past-event1.jpg` - Past Event 1 image
-- `past-event2.jpg` - Past Event 2 image
-- `past-event3.jpg` - Past Event 3 image
-- `past-event4.jpg` - Past Event 4 image
+### 💧 Water & Infrastructure *(Planned 2026)*
+An upcoming Water Project for the Bye Bye community to improve local health and hygiene conditions.
 
-## Placeholder Image Resources
+---
 
-Until you have your actual images, you can use placeholder services:
+## Impact at a Glance
 
-1. **Placeholder.com**: https://placeholder.com/
-   - Example: https://via.placeholder.com/800x600
-2. **Unsplash (Free stock photos)**: https://unsplash.com/
-   - Great for professional photos
-3. **Pexels (Free stock photos)**: https://pexels.com/
-   - Wide variety of images
-4. **Flaticon (For icons)**: https://flaticon.com/
-   - Free icons for objectives and features
+| Metric | Achievement |
+|---|---|
+| Females Reached | 1,200+ |
+| Community Contact Points | 15 |
+| Shoes Donated (Soles of Hope) | Multiple campaigns |
+| School Attendance Improvement | Measurable increase |
+| Year Founded | 2020 |
 
-5. **Lorem Picsum (Random placeholder images)**: https://picsum.photos/
-   - Example: https://picsum.photos/800/600
+---
 
-## Image Optimization Tips
+## Core Values
 
-- Save images in appropriate formats:
-  - JPG for photographs and complex images
-  - PNG for logos, icons, and images requiring transparency
-  - SVG for simple icons (scalable and small file size)
+| Value | Description |
+|---|---|
+| **Integrity** | Full transparency in fundraising and project execution |
+| **Compassion** | Serving the vulnerable with dignity at the heart of every initiative |
+| **Service** | Selfless service to communities, prioritizing impact over recognition |
+| **Empowerment** | Giving a "hand up," not just a "hand out" |
+| **Collaboration** | Partnering with local assemblies, schools, and donors |
+| **Resilience** | Overcoming cultural and logistical barriers to reach remote areas |
 
-- Compress images before uploading to improve website loading speed
-- Recommended tools:
-  - TinyPNG: https://tinypng.com/
-  - ImageOptim (Mac)
-  - JPEG-Optimizer
-  - Squoosh.app (Online)
+---
 
-## Quick Start with Placeholder Images
+## Get Involved
 
-To test the website immediately, you can create placeholder images using online services:
+There are several ways to support MATOF's mission:
 
-```
-Hero Image: https://via.placeholder.com/800x600/8B4789/FFFFFF?text=Hero+Image
-About Story: https://via.placeholder.com/600x600/D946A6/FFFFFF?text=Our+Story
-Events: https://via.placeholder.com/400x300/8B4789/FFFFFF?text=Event+Image
-Executives: https://via.placeholder.com/300x400/D946A6/FFFFFF?text=Board+Member
-```
+- **Donate** — Financial contributions directly fund programs and supplies for girls and women in need.
+- **Volunteer** — Join hands-on outreach efforts in rural communities.
+- **Partner** — Organizations and institutions can collaborate on programs and campaigns.
+- **Become a Member** — [Join the Foundation](https://marveloustouchfoundation.com/membership.html) to be a sustained part of the movement.
 
-Simply download these and rename them according to the list above.
+---
 
-## Current Status
+## Contact
 
-✅ HTML structure created (index.html + all additional pages)
-✅ CSS styling created (styles.css)
-✅ JavaScript functionality created (scripts.js)
-✅ Images directory created
-⏳ Awaiting actual image assets
+| | |
+|---|---|
+| 🌐 Website | [marveloustouchfoundation.com](https://marveloustouchfoundation.com/) |
+| 📧 Email | marvelloustouchfoundation@gmail.com |
+| 📞 Phone | +233 54 753 9664 |
+| 📍 Location | Atebubu-Amantin Municipal, Bono East, Ghana |
+| 📘 Facebook | [Marvelous Touch Foundation](https://web.facebook.com/profile.php?id=61555293811873) |
+| ▶️ YouTube | [@MarvelousTouchFoundation](https://www.youtube.com/@MarvelousTouchFoundation-x6l) |
 
-## Next Steps
+---
 
-1. Gather/create actual images for the foundation
-2. Save them in the images/ folder with the correct filenames
-3. Test the website locally by opening index.html in a browser
-4. Make any adjustments to colors, fonts, and content as needed
+*© 2026 Marvelous Touch Foundation. Together, we don't just touch lives — we transform them.*
