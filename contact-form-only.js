@@ -1,6 +1,34 @@
 // Contact Form Script - Standalone version
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Contact form script loaded');
+
+    // Mobile menu toggle (kept here because contact.html does not load scripts.js)
+    (function setupMobileMenu() {
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function setMenuState(isOpen) {
+            if (!navMenu || !mobileMenuToggle) return;
+            navMenu.classList.toggle('active', isOpen);
+            mobileMenuToggle.classList.toggle('is-open', isOpen);
+            mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        }
+
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                setMenuState(!navMenu.classList.contains('active'));
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.nav') && navMenu.classList.contains('active')) setMenuState(false);
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navMenu.classList.contains('active')) setMenuState(false);
+            });
+        }
+    })();
     
     // Get form elements
     const contactForm = document.getElementById('contactForm');

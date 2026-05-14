@@ -4,32 +4,33 @@
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setMenuState(isOpen) {
+        if (!navMenu || !mobileMenuToggle) return;
+
+        navMenu.classList.toggle('active', isOpen);
+        mobileMenuToggle.classList.toggle('is-open', isOpen);
+        mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    }
     
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            
-            // Animate hamburger menu
-            const spans = this.querySelectorAll('span');
-            spans[0].style.transform = navMenu.classList.contains('active') 
-                ? 'rotate(45deg) translate(5px, 5px)' 
-                : 'none';
-            spans[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
-            spans[2].style.transform = navMenu.classList.contains('active') 
-                ? 'rotate(-45deg) translate(7px, -6px)' 
-                : 'none';
+            setMenuState(!navMenu.classList.contains('active'));
         });
     }
     
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
-        if (!event.target.closest('.nav') && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            const spans = mobileMenuToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
+        if (!navMenu || !mobileMenuToggle) return;
+        if (!event.target.closest('.nav') && navMenu.classList.contains('active')) setMenuState(false);
+    });
+
+    // Close mobile menu on Escape
+    document.addEventListener('keydown', function(event) {
+        if (!navMenu || !mobileMenuToggle) return;
+        if (event.key === 'Escape' && navMenu.classList.contains('active')) setMenuState(false);
     });
 });
 
@@ -57,20 +58,36 @@ const observerOptions = {
     rootMargin: '0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-            const target = parseInt(entry.target.getAttribute('data-target'));
-            animateCounter(entry.target, target);
-            entry.target.classList.add('counted');
-        }
-    });
-}, observerOptions);
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const observer = (typeof IntersectionObserver !== 'undefined')
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                const target = parseInt(entry.target.getAttribute('data-target'));
+                if (prefersReducedMotion) {
+                    entry.target.textContent = String(target);
+                } else {
+                    animateCounter(entry.target, target);
+                }
+                entry.target.classList.add('counted');
+            }
+        });
+    }, observerOptions)
+    : null;
 
 // Observe all stat numbers
 document.addEventListener('DOMContentLoaded', function() {
     const statNumbers = document.querySelectorAll('.stat-number');
-    statNumbers.forEach(stat => observer.observe(stat));
+    statNumbers.forEach(stat => {
+        if (prefersReducedMotion) {
+            const target = parseInt(stat.getAttribute('data-target'));
+            if (!Number.isNaN(target)) stat.textContent = String(target);
+            stat.classList.add('counted');
+            return;
+        }
+
+        if (observer) observer.observe(stat);
+    });
 });
 
 // ============================================
@@ -78,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
     const anchors = document.querySelectorAll('a[href^="#"]');
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     anchors.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -92,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     window.scrollTo({
                         top: targetPosition,
-                        behavior: 'smooth'
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth'
                     });
                 }
             }
@@ -297,9 +315,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Scroll to top button (can be added later)
 function scrollToTop() {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
     });
 }
 
@@ -336,6 +355,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const dotsContainer = document.getElementById('dots-container');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!container || !dotsContainer) return;
     
     const totalImages = 15;
     let currentIndex = 0;
@@ -370,6 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startTimer() {
         clearInterval(slideInterval);
+        if (prefersReducedMotion) return;
         slideInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % totalImages;
             updateUI();
@@ -383,17 +406,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3. Arrow Listeners
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalImages;
-        updateUI();
-        startTimer();
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateUI();
+            startTimer();
+        });
+    }
 
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-        updateUI();
-        startTimer();
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateUI();
+            startTimer();
+        });
+    }
 
     // Initialize
     startTimer();

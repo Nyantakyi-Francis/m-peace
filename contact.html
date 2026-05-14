@@ -64,22 +64,24 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="header">
         <div class="container">
             <div class="logo">
                 <img src="images/logo.jpeg" alt="Marvelous Touch Foundation Logo" decoding="async">
                 <span class="logo-text">Marvelous Touch Foundation</span>
             </div>
-            <nav class="nav">
-                <ul class="nav-menu">
+            <nav class="nav" aria-label="Primary">
+                <ul class="nav-menu" id="primary-navigation">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="membership.html">Membership</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="executives.html">Executives</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
                 </ul>
-                <button class="mobile-menu-toggle">
+                <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="primary-navigation">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -88,6 +90,7 @@
         </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <section class="page-header">
         <div class="container">
             <h1>Contact Us</h1>
@@ -275,6 +278,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer class="footer">
         <div class="container">
