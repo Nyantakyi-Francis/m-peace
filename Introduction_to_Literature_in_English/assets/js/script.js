@@ -65,11 +65,66 @@ function addKeyboardNavigation() {
     });
 }
 
+function initYouTubeEmbeds() {
+    const embeds = document.querySelectorAll('.youtube-embed[data-youtube-id]');
+    if (embeds.length === 0) return;
+
+    embeds.forEach(embed => {
+        const videoId = embed.getAttribute('data-youtube-id');
+        const start = embed.getAttribute('data-start') || '0';
+        const title = embed.getAttribute('data-title') || 'YouTube video';
+
+        embed.style.backgroundImage = `url(https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg)`;
+
+        const load = () => {
+            const params = new URLSearchParams({
+                autoplay: '1',
+                start: String(start),
+                rel: '0',
+                modestbranding: '1'
+            });
+
+            if (window.location.hostname) {
+                params.set('origin', window.location.origin);
+            }
+
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?${params.toString()}`;
+            iframe.title = title;
+            iframe.allow =
+                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            iframe.allowFullscreen = true;
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = '0';
+
+            embed.replaceChildren(iframe);
+            embed.classList.add('youtube-embed--loaded');
+        };
+
+        const playButton = embed.querySelector('.youtube-embed__play');
+        if (playButton) {
+            playButton.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+                load();
+            });
+        }
+
+        embed.addEventListener('click', () => load(), { once: true });
+    });
+}
+
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', function() {
     setActiveNav();
     addScrollAnimations();
     addKeyboardNavigation();
+    initYouTubeEmbeds();
     
     // Optional: Add a "Back to Top" button on module pages
     if (document.querySelector('.module-container')) {
